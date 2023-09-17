@@ -75,7 +75,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     nvm use 16
     ```
 4. Refer to scripts in Discord2Facebook. construct .env file. Include all credentials such as Facebook's PAGE ID, MESSENGER_ACCESS_TOKEN (PAGE ACCESS_TOKEN), Discord Server, Channel ID and BOT ID, and TOKEN.
-5. Upload `index.js` and `.env`. Create new project folder and move both file and install dependencies. 
+5. Upload `index.js` and `.env`. Create a new project folder move both files and install dependencies. 
     ```
     mkdir buddy
     mv index.js package.json .env discordfb_folder
