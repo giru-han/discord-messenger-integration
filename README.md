@@ -27,24 +27,26 @@ Return messages are more straightforward. A cloud function pipes every incoming 
 4. Configure to access Facebook Graph API.
     - Sign-up [Meta Developers Platform](https://developers.facebook.com/) > Get Started > Create App > Type (Facebook Login for Business).
     - In the App Dashboard > Add products to your app > Messenger > add the Facebook Page 
-6. To Send or Receive Messages from user through API you need to add the user as a Tester in your App.
+5. To Send or Receive Messages from user through API you need to add the user as a Tester in your App.
     - The user needs to sign up Meta Developer platform and accept your app request to be a Tester.
     - Go to App Roles > Roles > Add Tester > Enter their Facebook username to send a request.
     - If you want to use the API on any user, you need to switch your App Mode to Live and request Advance Access from Facebook which will take days if you pass the approval.
-7. Construct a Google/Cloud Function. Use the Python scripts in Facebook2Discord. Deploy and obtain your function endpoint URL.
-8. Add the endpoint in your App Menu in step (4). App > Messenger > Settings > Webhooks > Fill your_endpoint/webhook and assign any string as Verify Token.
+6. Construct a Google/Cloud Function. Use the Python scripts in Facebook2Discord. Deploy and obtain your function endpoint URL.
+7. Add the endpoint in your App Menu in step (4). App > Messenger > Settings > Webhooks > Fill your_endpoint/webhook and assign any string as Verify Token.
    - Note the Page ID and Page Access Token (Click Generate Token to get one).
    - Ensure your Page is [subscribed](https://developers.facebook.com/docs/messenger-platform/webhooks) to the Webhooks notifications you want to receive.
    - You have to send a POST request to the API to subscribe. Refer [Subscribe your Page](https://developers.facebook.com/docs/messenger-platform/webhooks)
     ```
     curl -i -X POST "https://graph.facebook.com/PAGE-ID/subscribed_apps?subscribed_fields=messages&access_token=PAGE-ACCESS-TOKEN"
     ```
-9. Edit the cloud function. Add Runtime environment variables:
+8. Edit the cloud function. Add Runtime environment variables:
+
     | Name  | Value |
     | ------------- | ------------- |
     | HUB_VERIFY_TOKEN  | the string you assigned in your app webhook section Verify Token  |
     | CHANNEL_WEBHOOK  | your Discord Channel's Webhook (URL) |
-10. Edit main.py > go to function post_2_discord > comment out the line `dis_data.update(embed_image(data))` and uncomment the line `dis_data = {"username": "custom username", "content": str(data)}`. Your function should appear like this:
+9. Edit main.py > go to function post_2_discord > comment out the line `dis_data.update(embed_image(data))` and uncomment the line `dis_data = {"username": "custom username", "content": str(data)}`. Your function should appear like this:
+
     ```python
     def post_2_discord(data):
         headers = {"Content-Type": "application/json"}
@@ -59,8 +61,8 @@ Return messages are more straightforward. A cloud function pipes every incoming 
                         "content": str(data)+'ERROR! : '+str(e),
                         }
     ```
-11. Deploy the function. When the test user sends a message to your page, a JSON-like string will be posted in your discord channel. Note down the Sender ID. (PSID)
-12. Re-edit the function again. Undo the changes you do in step (10). You can customize  `fb user name`. Deploy function. Done.
+10. Deploy the function. When the test user sends a message to your page, a JSON-like string will be posted in your discord channel. Note down the Sender ID. (PSID)
+11. Re-edit the function again. Undo the changes you do in step (10). You can customize  `fb user name`. Deploy function. Done.
 
 
 ## Part 2: Discord to Facebook Messenger
