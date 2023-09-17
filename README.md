@@ -21,7 +21,7 @@ A Facebook/Business Page is needed to send messages on behalf of Discord users. 
 Return messages are more straightforward. A cloud function pipes every incoming Facebook message to the webhook belonging to the discord channel.
 
 ## Part 1: Facebook Messenger to Discord
-1. Obtain your Server ID (`GUILD_ID`) and Discord Channel's ID (`FB_CHANNEL`).
+1. Obtain your Server ID and Discord Channel's ID.
 2. Get the Discord Channel's Webhook (URL). Discord > Edit Channels > Integrations > Create Webhook > Copy the URL.
 3. Create/Use a Facebook Page, add the target user to the page, and ask the user to start a conversation with your page.
 4. Configure to access Facebook Graph API.
