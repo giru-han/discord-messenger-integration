@@ -21,7 +21,7 @@ A Facebook/Business Page is needed to send messages on behalf of Discord users. 
 Return messages are more straightforward. A cloud function pipes every incoming Facebook message to the webhook belonging to the discord channel.
 
 ## Part 1: Facebook Messenger to Discord
-1. Obtain your Discord Channel's ID.
+1. Obtain your Server ID (`GUILD_ID`) and Discord Channel's ID (`FB_CHANNEL`).
 2. Get the Discord Channel's Webhook (URL). Discord > Edit Channels > Integrations > Create Webhook > Copy the URL.
 3. Create/Use a Facebook Page, add the target user to the page, and ask the user to start a conversation with your page.
 4. Configure to access Facebook Graph API.
@@ -76,14 +76,29 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     nvm install 16
     nvm use 16
     ```
-4. Refer to scripts in Discord2Facebook. construct .env file. Include all credentials such as Facebook's PAGE ID, MESSENGER_ACCESS_TOKEN (PAGE ACCESS_TOKEN), Discord Server, Channel ID and BOT ID, and TOKEN.
-5. Upload `index.js` and `.env`. Create a new project folder move both files and install dependencies. 
+4. construct .env file, Include all credentials such as Facebook's PAGE ID, MESSENGER_ACCESS_TOKEN (PAGE ACCESS_TOKEN), Discord Server, Channel ID and BOT ID, and TOKEN:
+    ```
+    # Obtain from Discord Bot Discord developer site
+    CLIENT_TOKEN= ''
+    BOT_CLIENT_ID = ''
+    
+    # Obtain from Discord Server
+    GUILD_ID = ''
+    FB_CHANNEL = ''
+    
+    # Obtain from developer.facebook > your App > Messenger Tab
+    PAGE_ID = ''
+    TESTER_PSID = ''
+    MESSENGER_ACCESS_TOKEN = ''
+    ```
+5.   
+6. Refer to script in Discord2Facebook. Create a new project folder move both `index.js`, `.env` files and install dependencies. 
     ```
     mkdir buddy
     mv index.js package.json .env discordfb_folder
     npm init --if no package.json or good to lock the json
     npm install discord.js axios dotenv
     ```
-6. Run the bot.
+7. Run the bot.
     `node index.js`
     
