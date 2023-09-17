@@ -40,7 +40,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     ```python
     def post_2_discord(data):
         headers = {"Content-Type": "application/json"}
-        dis_data = {"username": "custom username"}
+        dis_data = {"username": "fb user name"} # customize fb username to appear in discord
         try:
             #dis_data.update(embed_image(data))
             # debug mode to return full data
@@ -52,13 +52,13 @@ Return messages are more straightforward. A cloud function pipes every incoming 
                         }
     ```
 11. Deploy the function. When the test user sends a message to your page, a JSON-like string will be posted in your discord channel. Note down the Sender ID. (PSID)
-12. Re-edit the function again. Undo the changes you do in step (10). Deploy function. Done.
+12. Re-edit the function again. Undo the changes you do in step (10). You can customize  `fb user name`. Deploy function. Done.
 
 
 ## Part 2: Discord to Facebook Messenger
 1. Create a Discord Bot, and add it to your Discord server. Give the bot permission at least to read messages in the channel.
 2. Obtain the Bot Client Token and Bot Client ID.
-3. Set up a server to host your discord bot. You can use a local machine or any Virtual Machine in the Cloud. I used Google Compute Engine E2-Micro minimum configuration with Ubuntu 20.04 LTS for this purpose. If you want to run it on Node JS. Install necessary node npm(16) and discord libraries:
+3. Set up a server to host your discord bot. You can use a local machine or any Virtual Machine in the Cloud. I used Google Compute Engine E2-Micro minimum configuration with Ubuntu 20.04 LTS for this purpose. If you want to run it on Node JS. Install necessary node npm(16):
     ```
     sudo apt update
     sudo apt upgrade
@@ -69,8 +69,19 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     if fails to install nvm 16. Try:
     ```
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-    `close reopen the ssh terminal`
+    # close reopen the ssh terminal
     - source ~/.bashrc
     nvm install 16
     nvm use 16
     ```
+4. Refer to scripts in Discord2Facebook. construct .env file. Include all credentials such as Facebook's PAGE ID, MESSENGER_ACCESS_TOKEN (PAGE ACCESS_TOKEN), Discord Server, Channel ID and BOT ID, and TOKEN.
+5. Upload `index.js` and `.env`. Create new project folder and move both file and install dependencies. 
+    ```
+    mkdir buddy
+    mv index.js package.json .env discordfb_folder
+    npm init --if no package.json or good to lock the json
+    npm install discord.js axios dotenv
+    ```
+6. Run the bot.
+    `node index.js`
+    
