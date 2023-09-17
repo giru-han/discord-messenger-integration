@@ -36,7 +36,9 @@ Return messages are more straightforward. A cloud function pipes every incoming 
    - Note the Page ID and Page Access Token (Click Generate Token to get one).
    - Ensure your Page is [subscribed](https://developers.facebook.com/docs/messenger-platform/webhooks) to the Webhooks notifications you want to receive.
    - You have to send a POST request to the API to subscribe. Refer [Subscribe your Page](https://developers.facebook.com/docs/messenger-platform/webhooks)
-    `curl -i -X POST "https://graph.facebook.com/PAGE-ID/subscribed_apps?subscribed_fields=messages&access_token=PAGE-ACCESS-TOKEN"`
+    ```
+    curl -i -X POST "https://graph.facebook.com/PAGE-ID/subscribed_apps?subscribed_fields=messages&access_token=PAGE-ACCESS-TOKEN"
+    ```
 9. Edit the cloud function. Add Runtime environment variables:
     | Name  | Value |
     | ------------- | ------------- |
