@@ -36,7 +36,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     | ------------- | ------------- |
     | HUB_VERIFY_TOKEN  | the string you assigned in your app webhook section Verify Token  |
     | CHANNEL_WEBHOOK  | your Discord Channel's Webhook (URL) |
-10. Edit main.py > go to function post_2_discord > comment out the line `dis_data.update(embed_image(data))` and uncomment the line `dis_data = {"username": "custom username", "content": str(data)}`. Your function will appear like this:
+10. Edit main.py > go to function post_2_discord > comment out the line `dis_data.update(embed_image(data))` and uncomment the line `dis_data = {"username": "custom username", "content": str(data)}`. Your function should appear like this:
     ```
     def post_2_discord(data):
         headers = {"Content-Type": "application/json"}
@@ -52,27 +52,25 @@ Return messages are more straightforward. A cloud function pipes every incoming 
                         }
     ```
 11. Deploy the function. When the test user sends a message to your page, a JSON-like string will be posted in your discord channel. Note down the Sender ID. (PSID)
-12. Re-edit the function again. undo the changes you do in step (10). Deploy function. Done.
+12. Re-edit the function again. Undo the changes you do in step (10). Deploy function. Done.
 
 
-## Part 1: Discord to Facebook Messenger
-1. Create a Discord Bot, and add it to your Discord server
-2. Obtain the Bot Client Token and Bot Client ID
-3. Obtain the Discord Channel's ID.
-4. Create/Use a Facebook Page, add the target user to the page, and start a conversation with the user.
-5. Configure to access Facebook Graph API.
-- Sign-up Meta Developers Platform > Get Started > Create App > Type (Facebook Login for Business).
-- In the Dashboard > Add products to your app > Messenger > add the Facebook Page > Note the Page ID and Page Access Token (Click Generate Token to get one).
-6. To Send or Receive Messages from user through API you need to add the user as a Tester in your App.
-  - The user needs to sign up Meta Developer platform and accept your app request to be a Tester.
-  - Go to App Roles > Roles > Add Tester > Enter their Facebook username to send a request.
-  - If you want to use the API on any user, you need to switch your App Mode to Live and request Advance Access from Facebook which will take days if you pass the approval.
-7. Set up a server to host your discord bot created in (1). You can use a local machine or any Virtual Machine in the Cloud. I used Google Compute Engine E2-Micro minimum configuration with Ubuntu 20.04 LTS for this purpose. If you want to run it on Node JS. Install necessary node npm(16) and discord libraries:
-```
-sudo apt update
-sudo apt upgrade
-sudo apt install nodejs npm
-nvm install 16
-nvm use 16
-```
---
+## Part 2: Discord to Facebook Messenger
+1. Create a Discord Bot, and add it to your Discord server. Give the bot permission at least to read messages in the channel.
+2. Obtain the Bot Client Token and Bot Client ID.
+3. Set up a server to host your discord bot. You can use a local machine or any Virtual Machine in the Cloud. I used Google Compute Engine E2-Micro minimum configuration with Ubuntu 20.04 LTS for this purpose. If you want to run it on Node JS. Install necessary node npm(16) and discord libraries:
+    ```
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install nodejs npm
+    nvm install 16
+    nvm use 16
+    ```
+    if fails to install nvm 16. try
+    ```
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+    ````close reopen the ssh terminal
+    - source ~/.bashrc
+    nvm install 16
+    nvm use 16
+    ```
