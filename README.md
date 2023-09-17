@@ -105,5 +105,5 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     npm install discord.js axios dotenv
     ```
 6. Run the bot.
-    `node index.js`
+    `node index.js` Done.
     
