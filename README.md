@@ -17,7 +17,7 @@ This project allows Discord <-> Facebook Messenger two-way communication.
 
 ## About Integration
 The Discord bot listens to every message (in the channel) and forwards them to Facebook API, you should host the bot in a server to keep it up and running.
-A Facebook/Business Page is needed to send messages on behalf of Discord users. Thus by attaching nickname text(bold) to every message, the Facebook user can recognize the sender.
+A Facebook/Business Page is needed to [send messages](https://developers.facebook.com/docs/messenger-platform/reference/send-api/) on behalf of Discord users. Thus by attaching nickname text(bold) to every message, the Facebook user can recognize the sender.
 Return messages are more straightforward. A cloud function pipes every incoming Facebook message to the webhook belonging to the discord channel.
 
 
@@ -101,7 +101,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     TESTER_PSID = ''
     MESSENGER_ACCESS_TOKEN = ''
     ```
-5. Refer to script in Discord2Facebook. Create a new project folder move both `index.js`, `.env` files and install dependencies. 
+5. Refer to the script in Discord2Facebook. Create a new project folder move both `index.js`, `.env` files and install dependencies. 
     ```
     mkdir discordfb_folder
     mv index.js package.json .env discordfb_folder
