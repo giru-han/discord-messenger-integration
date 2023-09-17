@@ -66,7 +66,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     nvm install 16
     nvm use 16
     ```
-    if fails to install nvm 16. try
+    if fails to install nvm 16. Try:
     ```
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
     ````close reopen the ssh terminal
