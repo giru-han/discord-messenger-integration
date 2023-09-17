@@ -37,7 +37,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     | HUB_VERIFY_TOKEN  | the string you assigned in your app webhook section Verify Token  |
     | CHANNEL_WEBHOOK  | your Discord Channel's Webhook (URL) |
 10. Edit main.py > go to function post_2_discord > comment out the line `dis_data.update(embed_image(data))` and uncomment the line `dis_data = {"username": "custom username", "content": str(data)}`. Your function should appear like this:
-    ```
+    ```python
     def post_2_discord(data):
         headers = {"Content-Type": "application/json"}
         dis_data = {"username": "custom username"}
@@ -69,7 +69,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     if fails to install nvm 16. Try:
     ```
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-    ````close reopen the ssh terminal
+    `close reopen the ssh terminal`
     - source ~/.bashrc
     nvm install 16
     nvm use 16
