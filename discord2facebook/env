@@ -1,0 +1,13 @@
+# Obtain from Discord Bot Discord developer site
+CLIENT_TOKEN= ''
+BOT_CLIENT_ID = ''
+
+# Obtain from Discord Server
+GUILD_ID = ''
+FB_CHANNEL = ''
+
+
+# Obtain from developer.facebook > your App > Messenger Tab
+PAGE_ID = ''
+TESTER_PSID = ''
+MESSENGER_ACCESS_TOKEN = ''
