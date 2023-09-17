@@ -23,16 +23,20 @@ Return messages are more straightforward. A cloud function pipes every incoming 
 ## Part 1: Facebook Messenger to Discord
 1. Obtain your Server ID and Discord Channel's ID.
 2. Get the Discord Channel's Webhook (URL). Discord > Edit Channels > Integrations > Create Webhook > Copy the URL.
-3. Create/Use a Facebook Page, add the target user to the page, and ask the user to start a conversation with your page.
+3. [Create](https://www.facebook.com/pages/create/?ref_type=registration_form)/Use a Facebook Page, add the target user to the page, and ask the user to start a conversation with your page.
 4. Configure to access Facebook Graph API.
-    - Sign-up Meta Developers Platform > Get Started > Create App > Type (Facebook Login for Business).
-    - In the Dashboard > Add products to your app > Messenger > add the Facebook Page > Note the Page ID and Page Access Token (Click Generate Token to get one).
+    - Sign-up [Meta Developers Platform](https://developers.facebook.com/) > Get Started > Create App > Type (Facebook Login for Business).
+    - In the App Dashboard > Add products to your app > Messenger > add the Facebook Page 
 6. To Send or Receive Messages from user through API you need to add the user as a Tester in your App.
     - The user needs to sign up Meta Developer platform and accept your app request to be a Tester.
     - Go to App Roles > Roles > Add Tester > Enter their Facebook username to send a request.
     - If you want to use the API on any user, you need to switch your App Mode to Live and request Advance Access from Facebook which will take days if you pass the approval.
 7. Construct a Google/Cloud Function. Use the Python scripts in Facebook2Discord. Deploy and obtain your function endpoint URL.
 8. Add the endpoint in your App Menu in step (4). App > Messenger > Settings > Webhooks > Fill your_endpoint/webhook and assign any string as Verify Token.
+   - Note the Page ID and Page Access Token (Click Generate Token to get one).
+   - Ensure your Page is [subscribed](https://developers.facebook.com/docs/messenger-platform/webhooks) to the Webhooks notifications you want to receive.
+   - You have to send a POST request to the API to subscribe. Refer [Subscribe your Page](https://developers.facebook.com/docs/messenger-platform/webhooks)
+    `curl -i -X POST "https://graph.facebook.com/PAGE-ID/subscribed_apps?subscribed_fields=messages&access_token=PAGE-ACCESS-TOKEN"`
 9. Edit the cloud function. Add Runtime environment variables:
     | Name  | Value |
     | ------------- | ------------- |
@@ -58,7 +62,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
 
 
 ## Part 2: Discord to Facebook Messenger
-1. Create a Discord Bot, and add it to your Discord server. Give the bot permission at least to read messages in the channel.
+1. [Create a Discord Bot](https://discord.com/build/app-developers), and add it to your Discord server. Give the bot permission at least to read messages in the channel.
 2. Obtain the Bot Client Token and Bot Client ID.
 3. Set up a server to host your discord bot. You can use a local machine or any Virtual Machine in the Cloud. I used Google Compute Engine E2-Micro minimum configuration with Ubuntu 20.04 LTS for this purpose. If you want to run it on Node JS. Install necessary node npm(16):
     ```
@@ -71,7 +75,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     if fails to install nvm 16. Try:
     ```
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-    # close reopen the ssh terminal
+    # close and reopen the SSH terminal
     - source ~/.bashrc
     nvm install 16
     nvm use 16
@@ -91,14 +95,13 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     TESTER_PSID = ''
     MESSENGER_ACCESS_TOKEN = ''
     ```
-5.   
-6. Refer to script in Discord2Facebook. Create a new project folder move both `index.js`, `.env` files and install dependencies. 
+5. Refer to script in Discord2Facebook. Create a new project folder move both `index.js`, `.env` files and install dependencies. 
     ```
     mkdir buddy
     mv index.js package.json .env discordfb_folder
     npm init --if no package.json or good to lock the json
     npm install discord.js axios dotenv
     ```
-7. Run the bot.
+6. Run the bot.
     `node index.js`
     
