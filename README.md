@@ -103,7 +103,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     ```
 5. Refer to script in Discord2Facebook. Create a new project folder move both `index.js`, `.env` files and install dependencies. 
     ```
-    mkdir buddy
+    mkdir discordfb_folder
     mv index.js package.json .env discordfb_folder
     npm init --if no package.json or good to lock the json
     npm install discord.js axios dotenv
