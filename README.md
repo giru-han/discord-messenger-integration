@@ -67,6 +67,7 @@ Return messages are more straightforward. A cloud function pipes every incoming 
 
 
 
+
 ## Part 2: Discord to Facebook Messenger
 1. [Create a Discord Bot](https://discord.com/build/app-developers), and add it to your Discord server. Give the bot permission at least to read messages in the channel.
 2. Obtain the Bot Client Token and Bot Client ID.
