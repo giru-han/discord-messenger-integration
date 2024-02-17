@@ -1,4 +1,4 @@
-# discord-messenger-integration
+# Discord-Messenger 2-Way Integration
 
 ![Git_Dissenger](https://github.com/giru-han/discord-messenger-integration/assets/109772802/f5672f80-b6af-478d-a901-4d14a2dd262e)
 
