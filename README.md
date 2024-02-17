@@ -1,4 +1,4 @@
-# Discord-Messenger 2-Way Integration
+# Connecting Platforms: Bidirectional Chat-Bridge for Discord and Messenger
 
 ![Git_Dissenger](https://github.com/giru-han/discord-messenger-integration/assets/109772802/f5672f80-b6af-478d-a901-4d14a2dd262e)
 
@@ -64,7 +64,6 @@ Return messages are more straightforward. A cloud function pipes every incoming 
     ```
 10. Deploy the function. When the test user sends a message to your page, a JSON-like string will be posted in your discord channel. Note down the Sender ID. (PSID)
 11. Re-edit the function again. Undo the changes you do in step (10). You can customize  `fb user name`. Deploy function. Done.
-
 
 
 
